@@ -13,6 +13,7 @@ locals {
             assign_public_ip = true
             nic_name = "nic-frontendjs"
             public_ip_name = "pip-frontendjs"
+            network_security_group_name = "nsg-frontendjs"
           } ,
           backend = { 
             vm_name = "vm-backendjs"
@@ -26,6 +27,7 @@ locals {
             assign_public_ip = false
             nic_name = "nic-backendjs"
             public_ip_name = "pip-backendjs"
+            network_security_group_name = "nsg-backendjs"
           }
 }
 
