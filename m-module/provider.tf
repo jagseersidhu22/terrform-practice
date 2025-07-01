@@ -6,6 +6,13 @@ terraform {
         }
     }
     
+    backend "azurerm" {
+        resource_group_name  = "jginfra"
+        storage_account_name = "bkjg"
+        container_name       = "tfstatefile"
+        key                  = "terraform.tfstate"
+      
+    }
  
 }
 

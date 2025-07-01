@@ -60,40 +60,42 @@ appgateway = {
     address_prefixes     = each.value.address_prefixes
 }
 
-module "frontvm" {
-    source = "../c-module/VM"
-    location = data.azurerm_resource_group.jvm_resource_group.location
-    resource_group_name = data.azurerm_resource_group.jvm_resource_group.name
-    vm_name = local.vm_matrix.frontend.vm_name
-    vm_size = local.vm_matrix.frontend.vm_size
-    admin_username = local.vm_matrix.frontend.admin_username
-    admin_password = local.vm_matrix.frontend.admin_password
-    vmpublisher = local.vm_matrix.frontend.vmpublisher
-    vmoffer = local.vm_matrix.frontend.vmoffer
-    vmsku = local.vm_matrix.frontend.vmsku
-    vmversion = local.vm_matrix.frontend.vmversion
-    assign_public_ip = local.vm_matrix.frontend.assign_public_ip
-    nic_name = local.vm_matrix.frontend.nic_name
-    public_ip_name = local.vm_matrix.frontend.public_ip_name
-    subnet_id = data.azurerm_subnet.jvm_subnet.id
+    module "frontvm" {
+        source = "../c-module/VM"
+        location = data.azurerm_resource_group.jvm_resource_group.location
+        resource_group_name = data.azurerm_resource_group.jvm_resource_group.name
+        vm_name = local.vm_matrix.frontend.vm_name
+        vm_size = local.vm_matrix.frontend.vm_size
+        admin_username = local.vm_matrix.frontend.admin_username
+        admin_password = local.vm_matrix.frontend.admin_password
+        vmpublisher = local.vm_matrix.frontend.vmpublisher
+        vmoffer = local.vm_matrix.frontend.vmoffer
+        vmsku = local.vm_matrix.frontend.vmsku
+        vmversion = local.vm_matrix.frontend.vmversion
+        assign_public_ip = local.vm_matrix.frontend.assign_public_ip
+        nic_name = local.vm_matrix.frontend.nic_name
+        public_ip_name = local.vm_matrix.frontend.public_ip_name
+        subnet_id = data.azurerm_subnet.jvm_subnet.id
+        network_security_group_name = local.vm_matrix.frontend.network_security_group_name
 
 
-}
+    }
 
-module "backvm" {
-    source = "../c-module/VM"
-    location = data.azurerm_resource_group.jvm_resource_group.location
-    resource_group_name = data.azurerm_resource_group.jvm_resource_group.name
-    vm_name = local.vm_matrix.backend.vm_name
-    vm_size = local.vm_matrix.backend.vm_size
-    admin_username = local.vm_matrix.backend.admin_username
-    admin_password = local.vm_matrix.backend.admin_password
-    vmpublisher = local.vm_matrix.backend.vmpublisher
-    vmoffer = local.vm_matrix.backend.vmoffer
-    vmsku = local.vm_matrix.backend.vmsku
-    vmversion = local.vm_matrix.backend.vmversion
-    assign_public_ip = local.vm_matrix.backend.assign_public_ip
-    nic_name = local.vm_matrix.backend.nic_name
-    public_ip_name = local.vm_matrix.backend.public_ip_name
-    subnet_id = data.azurerm_subnet.jvm_subnetbk.id
-}
+    module "backvm" {
+        source = "../c-module/VM"
+        location = data.azurerm_resource_group.jvm_resource_group.location
+        resource_group_name = data.azurerm_resource_group.jvm_resource_group.name
+        vm_name = local.vm_matrix.backend.vm_name
+        vm_size = local.vm_matrix.backend.vm_size
+        admin_username = local.vm_matrix.backend.admin_username
+        admin_password = local.vm_matrix.backend.admin_password
+        vmpublisher = local.vm_matrix.backend.vmpublisher
+        vmoffer = local.vm_matrix.backend.vmoffer
+        vmsku = local.vm_matrix.backend.vmsku
+        vmversion = local.vm_matrix.backend.vmversion
+        assign_public_ip = local.vm_matrix.backend.assign_public_ip
+        nic_name = local.vm_matrix.backend.nic_name
+        public_ip_name = local.vm_matrix.backend.public_ip_name
+        subnet_id = data.azurerm_subnet.jvm_subnetbk.id
+        network_security_group_name = local.vm_matrix.backend.network_security_group_name
+    }
