@@ -1,4 +1,4 @@
-# RG module for Azure infra - jitendra jain
+# RG module for Azure infra - Aparna
 
 resource "azurerm_resource_group" "rgj" {
   name     = var.resource_group_name
